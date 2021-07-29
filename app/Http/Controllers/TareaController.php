@@ -79,6 +79,12 @@ class TareaController extends Controller
      */
     public function destroy(Tarea $tarea)
     {
-        //
+        try {
+            $tarea->delete();
+            return response()->json(['tarea' => $tarea]);
+
+        } catch (\Throwable $th) {
+            return response()->json(['Error' => $th, 'message' => 'Algo salio mal']);
+        }
     }
 }
