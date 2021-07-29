@@ -33,7 +33,7 @@ class TareaController extends Controller
             $tarea->importance = $request->importance;
             $tarea->save();
 
-            return response()->json(['tarea' => $tarea]);
+            return response()->json(['tarea' => $tarea], 201);
         } catch (\Throwable $th) {
             return response()->json(['Error' => $th, 'message' => 'Algo salio mal']);
             
@@ -48,7 +48,7 @@ class TareaController extends Controller
      */
     public function show(Tarea $tarea)
     {
-        //
+        return response()->json(['tarea' => $tarea]);
     }
 
     /**
@@ -60,7 +60,15 @@ class TareaController extends Controller
      */
     public function update(Request $request, Tarea $tarea)
     {
-        //
+        try {
+            $tarea->description = $request->description;
+            $tarea->importance = $request->importance;
+            $tarea->save();
+            return response()->json(['tarea' => $tarea]);
+
+        } catch (\Throwable $th) {
+            return response()->json(['Error' => $th, 'message' => 'Algo salio mal']);
+        }
     }
 
     /**
