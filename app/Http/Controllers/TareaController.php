@@ -27,7 +27,17 @@ class TareaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $tarea = new Tarea;
+            $tarea->description = $request->description;
+            $tarea->importance = $request->importance;
+            $tarea->save();
+
+            return response()->json(['tarea' => $tarea]);
+        } catch (\Throwable $th) {
+            return response()->json(['Error' => $th, 'message' => 'Algo salio mal']);
+            
+        }
     }
 
     /**
