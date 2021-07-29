@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class TareaController extends Controller
 {
+    private const MESSAGE = 'Algo salio mal';
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +36,7 @@ class TareaController extends Controller
 
             return response()->json(['tarea' => $tarea], 201);
         } catch (\Throwable $th) {
-            return response()->json(['Error' => $th, 'message' => 'Algo salio mal']);
+            return response()->json(['Error' => $th, 'message' => self::MESSAGE]);
             
         }
     }
@@ -67,7 +68,7 @@ class TareaController extends Controller
             return response()->json(['tarea' => $tarea]);
 
         } catch (\Throwable $th) {
-            return response()->json(['Error' => $th, 'message' => 'Algo salio mal']);
+            return response()->json(['Error' => $th, 'message' => self::MESSAGE]);
         }
     }
 
@@ -84,7 +85,7 @@ class TareaController extends Controller
             return response()->json(['tarea' => $tarea]);
 
         } catch (\Throwable $th) {
-            return response()->json(['Error' => $th, 'message' => 'Algo salio mal']);
+            return response()->json(['Error' => $th, 'message' => self::MESSAGE]);
         }
     }
 }
